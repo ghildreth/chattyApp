@@ -10,6 +10,7 @@ class App extends Component {
       messages: []
     };
   this.addMessage = this.addMessage.bind(this);
+  this.addUserName = this.addUserName.bind(this);
   }
 
   componentDidMount() {
@@ -23,9 +24,7 @@ class App extends Component {
       const newMessages = [...oldlMessages, {id: newText.id, username: newText.username, content: newText.content}]
       this.setState({messages: newMessages})
       console.log('does the EVENT THINGY work?', newText);
-
     }
-
 
     setTimeout(() => {
       console.log("Simulating incoming message");
@@ -39,7 +38,7 @@ class App extends Component {
 
   }
 
-  addMessage(message){
+  addMessage(message, user){
     // const oldlMessages = this.state.messages;
     // const newMessages = [...oldlMessages, {username: this.state.currentUser.name, id: '1337', content: message}]
     // this.setState({ messages: newMessages})
@@ -47,11 +46,22 @@ class App extends Component {
     var msg = {
       type: 'sendMessage',
       content: message,
-      currentUser: this.state.currentUser
+      username: user
     };
     this.socket.send(JSON.stringify(msg));
     console.log(JSON.stringify(msg));
 
+  }
+
+  addUserName(name){
+    console.log('this is the name you want: ', name);
+    // var msg = {
+    //   type: 'sendMessage',
+    //   content: this.state.messages,
+    //   currentUser: name
+    // };
+    // this.socket.send(JSON.stringify(msg));
+    // console.log(JSON.stringify(msg));
   }
 
   render() {
@@ -61,7 +71,7 @@ class App extends Component {
     return (
       <div>
         <MessageList messagez={this.state.messages} />
-        <ChatBar currentUser={this.state.currentUser} onEnter={this.addMessage}/>
+        <ChatBar currentUser={this.state.currentUser} onMessageSubmit={this.addMessage} onUserNameSubmit={this.addUserName}/>
         </div>
 
     );
