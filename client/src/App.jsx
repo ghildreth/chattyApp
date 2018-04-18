@@ -15,8 +15,14 @@ class App extends Component {
   componentDidMount() {
     console.log("componentDidMount <App />");
     this.socket = new WebSocket("ws://localhost:3001/");
-      this.socket.onmesssage = (msg) => {
-        console.log('this is the message', msg);
+
+    this.socket.onmessage = (msg) => {
+      console.log('this is msgwewant', msg);
+      let newText = JSON.parse(msg.data)
+      const oldlMessages = this.state.messages;
+      const newMessages = [...oldlMessages, {id: newText.id, username: newText.username, content: newText.content}]
+      this.setState({messages: newMessages})
+      console.log('does the EVENT THINGY work?', newText);
 
     }
 
