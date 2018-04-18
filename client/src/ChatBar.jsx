@@ -3,28 +3,26 @@ import React, {Component} from 'react';
 class ChatBar extends Component {
   constructor(props) {
   super(props);
-  this.state={userName: ''}
+  this.state={userName: 'Anon'}
 
-  this.onSubmit = this.onSubmit.bind(this);
+  this.submitMessage = this.submitMessage.bind(this);
   this.changeUserName = this.changeUserName.bind(this);
 
 }
 
 changeUserName(event) {
-
-  const userName = event.target.value;
-  // console.log('this is the user name: ', userName);
-  this.setState({userName: userName});
-
-    if(event.keyCode === 13){
+  if (event.target.value === ''){
+    this.setState({userName: 'Anon'});
+  } else {
       const userName = event.target.value;
+      console.log('this is the user name: ', userName);
+      this.setState({userName: userName});
       this.props.onUserNameSubmit(userName);
-    }
-
+  }
 }
 
 
-onSubmit(event) {
+submitMessage(event) {
   if(event.keyCode === 13){
     let textMessage = event.target.value;
     let textName = event.target.value;
@@ -34,18 +32,18 @@ onSubmit(event) {
   }
 
 }
+// add an onBlur
 
   render() {
   console.log('rendering chat bar')
   return (
     <footer className="chatbar">
       <input className="chatbar-username"
-      value = {this.state.userName}
       placeholder="Your Name (Optional)"
-      type="text" name="textName"
-      onKeyUp={this.changeUserName}
-      onChange={this.changeUserName}/>
-      <input className="chatbar-message" name="textMessage" onKeyUp={this.onSubmit} placeholder="Type a message and hit ENTER" />
+      type="text"
+      name="textName"
+      onBlur={this.changeUserName}/>
+      <input className="chatbar-message" name="textMessage" onKeyUp={this.submitMessage} placeholder="Type a message and hit ENTER" />
     </footer>
   );
   }
