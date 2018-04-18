@@ -20,20 +20,22 @@ const server = express()
  wss.on('connection', (ws) => {
   console.log('Client connected');
 
-  ws.on('message', function incoming(data) {
-    const id = uuidv4();
-    let newMsg = JSON.parse(data);
-    const sendableMessage = {...newMsg, id};
+  ws.onmessage = (data) => {
+    const uId = uuidv4();
+    let newMsg = JSON.parse(data.data);
+    // console.log('this is new msg:', newMsg);
+    // console.log('this is the new message', newMsg);
+    const sendableMessage = JSON.stringify({id: uId, username: newMsg.username, content: newMsg.content});
     console.log(sendableMessage);
-    console.log(`User ${newMsg.currentUser.name} said ${newMsg.content} with id: ${id}`);
+    // console.log(`User ${newMsg.currentUser.name} said ${newMsg.content} with id: ${id}`);
 
     // ws.send('something back:', sendableMessage);
-    wss.clients.forEach(function each(client) {
+    wss.clients.forEach(function (client) {
       if(client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify(sendableMessage));
+        client.send(sendableMessage);
       }
-    })
-  });
+    });
+  };
 
   // set up a callback for hwen a client closes the coket. THis usually means they closed their browser
   ws.on('close', () => console.log('Client disconnected'));
