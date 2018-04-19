@@ -43,15 +43,13 @@ class App extends Component {
         default:
 
           throw new Error("Unknown event type " + parsedMsg.type);
-
       }
-
     }
 
     setTimeout(() => {
       console.log("Simulating incoming message");
       // adds a bew nessage to the list in the data storeee
-      const newMessage ={id: 3, username: "Michelle Obama", content: "Hello there!"};
+      const newMessage ={id: 3, username: "Michelle Obama", content: "Hello there!", type: "incomingMessage"};
       const messages = this.state.messages.concat(newMessage)
       // updates the state OF the app component
       // calling setState will trigga a call to render() in App and all child components
