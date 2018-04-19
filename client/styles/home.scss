@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Bungee+Shade|Gugi|Monoton|Ranchers');
+
 body {
       background: white;
       color: black;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Gugi', cursive;
       font-size: 14px;
       margin: 70px 0;
     }
@@ -73,6 +75,7 @@ body {
     }
 
     .navbar-brand {
+      font-family: 'Bungee Shade', cursive;
       color: inherit;
       display: block;
       float: left;

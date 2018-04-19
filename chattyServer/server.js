@@ -20,12 +20,31 @@ const server = express()
  wss.on('connection', (ws) => {
   console.log('Client connected');
 
+
+  wss.broadcast = function broadcast(data) {
+    wss.clients.forEach(function each (client) {
+      if(client.readyState === ws.OPEN){
+        client.send(data);
+      }
+    });
+  };
+
+  const broadcastUserCount = () => {
+    wss.broadcast(JSON.stringify({
+      type: 'userCount',
+      numOfUsers: wss.clients.size
+    }));
+  };
+
+  broadcastUserCount();
   ws.onmessage = (data) => {
+
     const uId = uuidv4();
     let newMsg = JSON.parse(data.data);
+    let parsedText = newMsg.type;
     // console.log('this is new msg:', newMsg);
     // console.log('this is the new message', newMsg);
-    const sendableMessage = JSON.stringify({id: uId, username: newMsg.username, content: newMsg.content});
+    const sendableMessage = JSON.stringify({type: parsedText === "postMessage" ?  "incomingMessage" : "incomingNotification", id: uId, username: newMsg.username, content: newMsg.content});
     console.log(sendableMessage);
     // console.log(`User ${newMsg.currentUser.name} said ${newMsg.content} with id: ${id}`);
 
@@ -36,7 +55,11 @@ const server = express()
       }
     });
   };
-
+  console.log(wss.clients.size);
   // set up a callback for hwen a client closes the coket. THis usually means they closed their browser
-  ws.on('close', () => console.log('Client disconnected'));
- });
+  ws.on('close', () => {
+      console.log('Client disconnected');
+      broadcastUserCount();
+
+  });
+});
