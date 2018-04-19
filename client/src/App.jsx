@@ -42,7 +42,7 @@ class App extends Component {
           throw new Error("Unknown event type " + parsedMsg.type);
       }
     }
-    //  this was adding in as not only a test but turned it into a bot that greets each user
+    //  this was setTimout was added in not only as a test but I turned it into a bot that greets each user
     setTimeout(() => {
       console.log("Simulating incoming message");
       // adds a bew nessage to the list in the data store
