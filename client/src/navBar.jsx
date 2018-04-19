@@ -7,7 +7,7 @@ export default class NavBar extends Component {
     <nav className="navbar">
     <i className="far fa-comment-alt"></i>
       <a href="/" className="navbar-brand">Chatty</a>
-      {this.props.userCount > 1 ? <span> Users online: {this.props.userCount}</span> : <span> {this.props.userCount} User online: </span>}
+     {this.props.userCount > 1 ? <span className="userCounter"> {this.props.userCount} Users Online </span> : <span className="userCounter"> {this.props.userCount} User Online  </span>}
     </nav>
     );
   }

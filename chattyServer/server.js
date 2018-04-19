@@ -31,6 +31,7 @@ const server = express()
   const broadcastUserCount = () => {
     wss.broadcast(JSON.stringify({
       type: 'userCount',
+      fontColor: 'rebeccapurple',
       numOfUsers: wss.clients.size
     }));
   };

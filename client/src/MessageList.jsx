@@ -12,6 +12,7 @@ export default class MessageList extends Component {
                 let user = {m.username}
                 let content = {m.content}
                 let type = {m.type}
+                let color = {m.fontColor}
                 />);
             } else {
                 return(

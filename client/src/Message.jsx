@@ -9,7 +9,7 @@ export default class MessageBoard extends Component {
     <main className="messages">
 
       <div className="message">
-        <span className="message-username">{this.props.user} </span>
+        <span className="message-username" style={this.props.color}>{this.props.user} </span>
         <span className="message-content">{this.props.content} </span>
       </div>
 

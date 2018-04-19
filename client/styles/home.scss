@@ -10,7 +10,7 @@ body {
     }
 
     .chatbar {
-      background: tomato;
+      background: rebeccapurple;
       border-top: 1px solid black;
       bottom: 0;
       display: flex;
@@ -65,7 +65,7 @@ body {
     }
 
     .navbar {
-      background: tomato;
+      background: rebeccapurple;
       border-bottom: 1px solid black;
       height: 60px;
       left: 0;
@@ -85,5 +85,23 @@ body {
       height: 60px;
       line-height: 60px;
       padding: 0 10px;
-      text-decoration: none;
     }
+
+    .notification-content {
+    font-family: 'Fugaz One', cursive;
+    vertical-align: middle;
+    line-height: 90px;
+    padding-left: 30px;
+    }
+
+    .userCounter {
+    font-family: 'Fugaz One', cursive;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.fa, .far, .fas {
+    font-family: Font Awesome\ 5 Free;
+    padding-top: 5px;
+}

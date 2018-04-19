@@ -35,7 +35,7 @@ class App extends Component {
           break;
 
         case "userCount":
-          this.setState({userCount: parsedMsg.numOfUsers})
+          this.setState({userCount: parsedMsg.numOfUsers, fontColor: parsedMsg.fontColor})
           break;
         default:
 
