@@ -20,7 +20,6 @@ const server = express()
  wss.on('connection', (ws) => {
   console.log('Client connected');
 
-
   wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each (client) {
       if(client.readyState === ws.OPEN){
@@ -37,18 +36,16 @@ const server = express()
   };
 
   broadcastUserCount();
+  // adds one to the count to my state
   ws.onmessage = (data) => {
 
+// this generates a date, parses the message from App and repackages with an id and new type key value pair
     const uId = uuidv4();
     let newMsg = JSON.parse(data.data);
     let parsedText = newMsg.type;
-    // console.log('this is new msg:', newMsg);
-    // console.log('this is the new message', newMsg);
     const sendableMessage = JSON.stringify({type: parsedText === "postMessage" ?  "incomingMessage" : "incomingNotification", id: uId, username: newMsg.username, content: newMsg.content});
-    console.log(sendableMessage);
-    // console.log(`User ${newMsg.currentUser.name} said ${newMsg.content} with id: ${id}`);
+    // console.log(sendableMessage);
 
-    // ws.send('something back:', sendableMessage);
     wss.clients.forEach(function (client) {
       if(client.readyState === WebSocket.OPEN) {
         client.send(sendableMessage);
@@ -56,7 +53,7 @@ const server = express()
     });
   };
   console.log(wss.clients.size);
-  // set up a callback for hwen a client closes the coket. THis usually means they closed their browser
+  // set up a callback for when a client closes the connects. This usually means they closed their browser.
   ws.on('close', () => {
       console.log('Client disconnected');
       broadcastUserCount();

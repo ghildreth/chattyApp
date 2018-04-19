@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MessageBoard from './Message.jsx';
 import Notification from './Notification.jsx';
 
-class MessageList extends Component {
+export default class MessageList extends Component {
     render() {
         const singleMesssage = this.props.messagez.map((m) => {
             if (m.type === "incomingMessage"){
@@ -38,5 +38,4 @@ class MessageList extends Component {
 
 }
 
-export default MessageList;
 

@@ -10,50 +10,27 @@ class ChatBar extends Component {
     this.changeUserName = this.changeUserName.bind(this);
   }
 
-// function ChatBar({name, changeName}){
-//   const checkName = (e) =>{
-//     if(e.target.value !== name){
-//       changeName(e.target.value);
-//     }
-//   };
-//   return (<div>
-//     <input type='text' defaultValue={name} onBlur={checkName}/>
-//     <input type='text' placeholder='message'/>
-//   </div>);
-// }
-
   changeUserName(event) {
     if (event.target.value === ''){
       this.setState({userName: 'Anonymous'});
-
-    // } else if (event.target.value !== this.state.userName) {
-      // this.setState({userName: event.target.value});
-    //   console.log('new name is:', event.target.value)
-
-    } else {
-        // const userName = event.target.value;
-        // console.log('this is the user name: ', userName);
-        this.setState({userName: event.target.value});
-        this.props.onUserNameSubmit(event.target.value);
+    }else {
+      this.setState({userName: event.target.value});
+      this.props.onUserNameSubmit(event.target.value);
     }
-
   }
-
 
   submitMessage(event) {
     if(event.keyCode === 13){
       let textMessage = event.target.value;
       let textName = event.target.value;
-      console.log(textMessage);
+      // making sure the message is captured correctly
+      // console.log(textMessage);
       this.props.onMessageSubmit(textMessage, this.state.userName);
       event.target.value = '';
     }
-
   }
-  // add an onBlur
-
     render() {
-  console.log('rendering chat bar')
+  console.log('Rendering Chat Bar')
   return (
     <footer className="chatbar">
       <input className="chatbar-username"
@@ -66,5 +43,4 @@ class ChatBar extends Component {
   );
   }
 }
-
 export default ChatBar;

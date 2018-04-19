@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Notification extends Component {
+export default class Notification extends Component {
   render() {
   console.log('rendering notifications')
   return(
@@ -10,5 +10,3 @@ class Notification extends Component {
     );
   }
 }
-
-export default Notification;
