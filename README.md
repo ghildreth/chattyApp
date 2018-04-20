@@ -2,6 +2,7 @@ Chatty App
 =====================
 
 Hello World and welcome to my project!
+
 'Chatty App' showcases ReactJS and WebSockets that run in unison to create an interactive chat application.
 Users start off as 'Anonymous' until they type in their own screename. When this happens, there's a notification for the entire chatroom and the username's color changes to a random color. When you type into the username input you don't even have to press enter, as an 'onBlur' handles when you've switched to typing a message. Messages are able to be images too! This required some cool RegEx!
 
@@ -24,12 +25,12 @@ For both:
 
 cd react-simple-boilerplate
 
-...then for the WSS
+...then for the WSS:
 
 cd chattyServer
 node server.js
 
-then for the client App.jsx:
+...then for the client App.jsx:
 
 cd client
 npm start
