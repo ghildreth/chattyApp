@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 
 export default class MessageBoard extends Component {
   render() {
-
     return(
-
     <main className="messages">
       <div className="message">
         <span className="message-username" style={{color: this.props.color}}>{this.props.user} </span>
