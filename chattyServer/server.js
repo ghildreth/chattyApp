@@ -19,6 +19,11 @@ const server = express()
 
  wss.on('connection', (ws) => {
   console.log('Client connected');
+  colorObject = {
+    type: "colorMessage",
+    color: getRandomColor(),
+  }
+  ws.send(JSON.stringify(colorObject))
 
   wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each (client) {
@@ -28,10 +33,19 @@ const server = express()
     });
   };
 
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+    }
+  return color;
+  }
+
   const broadcastUserCount = () => {
     wss.broadcast(JSON.stringify({
       type: 'userCount',
-      fontColor: 'rebeccapurple',
+
       numOfUsers: wss.clients.size
     }));
   };
@@ -44,8 +58,11 @@ const server = express()
     const uId = uuidv4();
     let newMsg = JSON.parse(data.data);
     let parsedText = newMsg.type;
-    const sendableMessage = JSON.stringify({type: parsedText === "postMessage" ?  "incomingMessage" : "incomingNotification", id: uId, username: newMsg.username, content: newMsg.content});
-    // console.log(sendableMessage);
+
+    const fontColor = getRandomColor();
+
+    const sendableMessage = JSON.stringify({ type: parsedText === "postMessage" ?  "incomingMessage" : "incomingNotification", id: uId, username: newMsg.username, content: newMsg.content, color: newMsg.color, image: newMsg.image});
+    console.log(sendableMessage);
 
     wss.clients.forEach(function (client) {
       if(client.readyState === WebSocket.OPEN) {
@@ -58,6 +75,5 @@ const server = express()
   ws.on('close', () => {
       console.log('Client disconnected');
       broadcastUserCount();
-
   });
 });

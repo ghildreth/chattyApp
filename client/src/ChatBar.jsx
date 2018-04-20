@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class ChatBar extends Component {
   constructor(props) {
     super(props);
-    this.state={userName: 'Anon',
+    this.state={userName: 'Anonymous',
                 type: ''}
 
     this.submitMessage = this.submitMessage.bind(this);
@@ -22,7 +22,6 @@ class ChatBar extends Component {
   submitMessage(event) {
     if(event.keyCode === 13){
       let textMessage = event.target.value;
-      let textName = event.target.value;
       // making sure the message is captured correctly
       // console.log(textMessage);
       this.props.onMessageSubmit(textMessage, this.state.userName);
@@ -30,7 +29,6 @@ class ChatBar extends Component {
     }
   }
     render() {
-  console.log('Rendering Chat Bar')
   return (
     <footer className="chatbar">
       <input className="chatbar-username"

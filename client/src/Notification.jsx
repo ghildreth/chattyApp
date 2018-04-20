@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 
 export default class Notification extends Component {
   render() {
-  console.log('rendering notifications')
   return(
-      <div className="notification">
-        <span className="notification-content">{this.props.content}</span>
+      <div className='notification'>
+        <span className='notification-content'>{this.props.content}</span>
       </div>
     );
   }

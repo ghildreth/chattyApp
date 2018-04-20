@@ -1,12 +1,13 @@
 Chatty App
 =====================
 
-A minimal and light chat application for ReactJS.
+My 6th week project that showcases ReactJS and WebSockets that run in unison to create an interactive chat app.
+I completed the strech work so that color update for each unique user, and users are able to send images from the input.
 
 
 ## Screenshots
 
-![screenshot from ChattyApp's Chat Box](https://user-images.githubusercontent.com/34799149/39013358-01f8dd42-43cc-11e8-8b44-58b5b4833c4d.png)
+![screenshot from 2018-04-19 17-09-05](https://user-images.githubusercontent.com/34799149/39024381-5a38703e-43f5-11e8-8d82-e5d58e89e935.png)
 
 
 ### Usage
@@ -49,22 +50,22 @@ npm run lint
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-  - babel-core
-  - babel-loader
-  - babel-preset-es2015
-  - babel-preset-react
-  - babel-preset-stage-0
-  - css-loader
-  - eslint
-  - eslint-plugin-react
-  - express
-  - node-sass
-  - react
-  - react-dom
-  - sass-loader
-  - sockjs-client
-  - style-loader
-  - uuid
-  - webpack
-  - webpack-dev-server
-  - ws
+* babel-core
+* babel-loader
+* babel-preset-es2015
+* babel-preset-react
+* babel-preset-stage-0
+* css-loader
+* eslint
+* eslint-plugin-react
+* express
+* node-sass
+* react
+* react-dom
+* sass-loader
+* sockjs-client
+* style-loader
+* uuid
+* webpack
+* webpack-dev-server
+* ws
