@@ -9,9 +9,9 @@ Users start off as 'Anonymous' until they type in their own screename. When this
 Please have fun! XD
 
 ## Screenshots
-
+![screenshot from 2018-04-19 20-59-03](https://user-images.githubusercontent.com/34799149/39030145-bb07fbcc-4414-11e8-9b76-e3b69d8cbe7f.png)
 ![screenshot from 2018-04-19 17-09-05](https://user-images.githubusercontent.com/34799149/39024381-5a38703e-43f5-11e8-8d82-e5d58e89e935.png)
-
+![screenshot from 2018-04-19 21-02-51](https://user-images.githubusercontent.com/34799149/39030229-3c262986-4415-11e8-9d08-d78a844ed8b5.png)
 
 ### Usage
 

@@ -33,14 +33,18 @@ const server = express()
     });
   };
 
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-    }
-  return color;
+var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+var randomValue = a[Math.floor(a.length * Math.random())];
+
+function getRandomColor() {
+  let newColor = '';
+  let colors = ['#9c88ff', '#00a8ff', 'fushia', '#44bd32', 'lime', 'maroon', '#fbc531', '#e84118', '#e84118'];
+  for (let i = 0; i < colors.length ; i++) {
+  newColor = colors[Math.floor(colors.length * Math.random())];
+
   }
+return newColor;
+}
 
   const broadcastUserCount = () => {
     wss.broadcast(JSON.stringify({
