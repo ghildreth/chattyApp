@@ -1,7 +1,7 @@
 Chatty App
 =====================
 
-Hello World,and welcome to my project!
+Hello World and welcome to my project!
 'Chatty App' showcases ReactJS and WebSockets that run in unison to create an interactive chat application.
 Users start off as 'Anonymous' until they type in their own screename. When this happens, there's a notification for the entire chatroom and the username's color changes to a random color. When you type into the username input you don't even have to press enter, as an 'onBlur' handles when you've switched to typing a message. Messages are able to be images too! This required some cool RegEx!
 
@@ -13,8 +13,6 @@ Please have fun! XD
 
 
 ### Usage
-
-Clone project and create your own git repo.
 
 ```
 Fork and git clone git@github.com:ghildreth/chattyApp.git
